@@ -1,0 +1,8 @@
+# ~/.config/wofi/config
+show=drun
+width=30%
+lines=10
+prompt=Search Apps...
+allow_images=true
+image_size=24
+exec_search=true
