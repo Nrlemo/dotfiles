@@ -1,0 +1,29 @@
+window {
+    margin: 5px;
+    border: 2px solid #bd93f9; /* Un color lavanda elegante */
+    background-color: #282a36;
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 14px;
+}
+
+#input {
+    margin: 5px;
+    border: none;
+    color: #f8f8f2;
+    background-color: #44475a;
+}
+
+#inner-box {
+    margin: 5px;
+    background-color: #282a36;
+}
+
+#outer-box {
+    margin: 5px;
+    background-color: #282a36;
+}
+
+#selected {
+    background-color: #44475a;
+    border-radius: 5px;
+}

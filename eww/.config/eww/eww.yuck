@@ -1,0 +1,79 @@
+;; Variables del sistema
+(defpoll username :interval "24h" "whoami")
+(defpoll uptime :interval "1m" "uptime -p | sed 's/up //'")
+
+;; Widget principal dividido en dos columnas
+(defwidget info_widget []
+  ;; Caja principal HORIZONTAL que contiene las dos columnas
+  (box :orientation "h" :space-evenly false :spacing 20 :class "main-container-split"
+    
+    ;; ----- COLUMNA IZQUIERDA (Sistema y Atajos) -----
+    (box :orientation "v" :space-evenly false :class "column-box"
+      
+      ;; Bloque 1: Info de Sistema
+      (box :orientation "v" :space-evenly false :class "panel-box"
+        (box :class "title-pill" :halign "center"
+          (label :class "title-text" :text "ARCH LINUX"))
+        (box :orientation "v" :class "content-text"
+          (label :text "User: ${username}" :halign "start")
+          (label :text "Up: ${uptime}" :halign "start")))
+      
+      (box :height "15px") ;; Separador vertical
+
+      ;; Bloque 2: Atajos de Sway
+      (box :orientation "v" :space-evenly false :class "panel-box"
+        (box :class "title-pill" :halign "center"
+          (label :class "title-text" :text "SWAY SHORTCUTS"))
+        (box :orientation "v" :class "content-text" :spacing 2
+          (label :text "[Win]+Enter   → Terminal" :halign "start")
+          (label :text "[Win]+d       → Launcher" :halign "start")
+          (label :text "[Win]+q       → Cerrar" :halign "start")
+          (label :text "[Win]+S+e     → Power Menu" :halign "start")
+          (label :text "[Win]+S+c     → Reload" :halign "start")
+          (label :text "[Win]+S+s     → Screenshot" :halign "start")
+          (label :text "[Win]+[1-9]   → Workspace" :halign "start")))
+    ) ;; Fin Columna Izquierda
+
+    ;; ----- COLUMNA DERECHA (Comandos Linux) -----
+    (box :orientation "v" :space-evenly false :class "column-box"
+      
+      ;; Bloque 3: Gestión de Sistema
+      (box :orientation "v" :space-evenly false :class "panel-box"
+        (box :class "title-pill" :halign "center"
+          (label :class "title-text" :text "SYSTEM ADMIN"))
+        (box :orientation "v" :class "content-text" :spacing 2
+          (label :text "ls -laH    → Listar todo" :halign "start")
+          (label :text "ip -c a    → Ver IPs" :halign "start")
+          (label :text "systemctl  → Servicios" :halign "start")
+          (label :text "journalctl → Logs sistema" :halign "start")
+          (label :text "df -h      → Disco uso" :halign "start")
+          (label :text "free -m    → RAM uso" :halign "start")))
+
+      (box :height "15px") ;; Separador vertical
+
+      ;; Bloque 4: Manipulación de Texto y Archivos
+      (box :orientation "v" :space-evenly false :class "panel-box"
+        (box :class "title-pill" :halign "center"
+          (label :class "title-text" :text "TEXT & FILES"))
+        (box :orientation "v" :class "content-text" :spacing 2
+          (label :text "awk '{p $1}' → Columna 1" :halign "start")
+          (label :text "sed 's/a/b/' → Reemplazar" :halign "start")
+          (label :text "find . -name → Buscar" :halign "start")
+          (label :text "tar -xzvf    → Extraer tar" :halign "start")
+          (label :text "grep -ri     → Filtrar txt" :halign "start")))
+    ) ;; Fin Columna Derecha
+  )
+)
+
+(defwindow dashboard
+  :monitor 0
+  ;; Hemos cambiado :anchor a "top left" y ajustado :x para que pegue a la izquierda
+  :geometry (geometry :x "20px" 
+                      :y "20px" 
+                      :width "700px" 
+                      :height "500px" 
+                      :anchor "top left")
+  :stacking "bottom"
+  :exclusive false
+  :focusable false
+  (info_widget))

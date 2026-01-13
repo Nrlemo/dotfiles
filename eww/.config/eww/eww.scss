@@ -1,0 +1,49 @@
+/* Colores Cyberpunk/Blue Neon */
+$blue-neon: #00aaff;
+$bg-transparent: rgba(10, 14, 20, 0.85);
+$text-white: #e0e0e0;
+
+window {
+  background-color: transparent;
+  // Asegúrate de tener una fuente Nerd instalada para los iconos si los usas a futuro
+  font-family: "JetBrains Mono Nerd Font", "Roboto Mono", monospace;
+}
+
+// Contenedor principal que agrupa las dos columnas
+.main-container-split {
+    padding: 5px;
+}
+
+// Cajas individuales de estilo neon
+.panel-box {
+  background-color: $bg-transparent;
+  border: 2px solid $blue-neon;
+  border-radius: 12px; // Radio un poco más pequeño
+  padding: 12px;     // Padding reducido para ahorrar espacio
+  box-shadow: 0 0 8px rgba(0, 170, 255, 0.4); // Sombra ligeramente reducida
+}
+
+.title-pill {
+  background-color: rgba(0, 170, 255, 0.2);
+  border: 1px solid $blue-neon;
+  border-radius: 15px;
+  padding: 4px 12px; // Padding reducido
+  margin-bottom: 10px;
+}
+
+// TÍTULOS: Tamaño reducido un ~25% (de 1.1em a 0.85em)
+.title-text {
+  color: $blue-neon;
+  font-weight: bold;
+  font-size: 0.85em; 
+}
+
+// CONTENIDO: Tamaño reducido un ~25% (de 0.95em a 0.75em)
+.content-text {
+  color: $text-white;
+  font-size: 0.75em;
+  
+  label { 
+    margin-bottom: 2px; // Menos margen entre líneas
+  }
+}
