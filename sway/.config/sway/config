@@ -1,0 +1,185 @@
+# --- Configuración Shion para Latitude 5480 ---
+
+
+# Tecla Super (Windows) como modificador principal
+set $mod Mod4
+
+# Direcciones (estilo Vim)
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Aplicaciones preferidas (Livianas!)
+set $term foot
+set $menu wofi --show run
+
+# --- Inputs: Touchpad y Teclado ---
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    dwt enabled
+}
+
+input "type:keyboard" {
+    xkb_layout latam,us
+    xkb_options "grp:alt_shift_toggle"
+    # Configura el atajo Alt + Shift para cambiar entre distribuciones rápidamente.
+}
+
+# --- Teclas Multimedia (Latitude 5480) ---
+
+# Brillo de pantalla (Usa brightnessctl)
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# Volumen (Usa pactl / Pipewire o PulseAudio)
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# --- Atajos de Sistema ---
+
+# Iniciar terminal
+bindsym $mod+Return exec $term
+
+# Cerrar ventana enfocada
+bindsym $mod+q kill
+
+# Iniciar lanzador de apps
+bindsym $mod+d exec $menu
+
+# Menú de apagado (usando el script ~/.local/bin/wofi-powermenu.sh)
+bindsym $mod+Shift+e exec ~/.local/bin/wofi-powermenu.sh
+
+# Recargar configuración de Sway
+bindsym $mod+Shift+c reload
+
+# Salir de Sway (Logout)
+#bindsym $mod+Shift+e exec swaynag -t warning -m '¿Quieres salir de Sway?' -b 'Sí, salir' 'swaymsg exit'
+
+# --- Estética y Barra ---
+
+# Fondo de pantalla (Nyarch style) - Ajusta la ruta a tu imagen favorita
+output * bg /usr/share/backgrounds/BzE9wFa.jpg fill
+
+default_border pixel 2
+gaps inner 10
+gaps outer 5
+
+bar {
+    swaybar_command waybar
+}
+
+# --- Screenshots (Grim + Slurp) ---
+bindsym Print exec grim -g "$(slurp)" ~/Imagenes/$(date +%Y-%m-%d-%H%M%S).png
+
+exec flameshot
+# Esto lanza el daemon en segundo plano al iniciar Sway.
+
+# Lanzar Flameshot en modo selección
+bindsym $mod+Shift+s exec flameshot gui
+# $mod es Mod4 (Win). Shift+s captura la intención.
+
+assign [app_id="vivaldi-stable"] workspace number 2
+# Fuerza a que cualquier ventana de Vivaldi se abra siempre en el espacio 2.
+
+# Ciclar entre workspaces activos en el monitor actual
+bindsym $mod+Tab workspace next_on_output
+# Salta al siguiente espacio de trabajo con actividad.
+
+bindsym $mod+Shift+Tab workspace prev_on_output
+# Vuelve al espacio de trabajo anterior con actividad.
+
+# Volver al último workspace visitado (Back and Forth)
+bindsym $mod+b workspace back_and_forth
+# Muy útil para saltar entre los dos espacios que más usas en el momento.
+
+# --- Navegación entre ventanas (Foco) ---
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# --- Mover ventanas de posición (Mod + Shift + Flechas) ---
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# --- Navegación entre Workspaces ($mod + número) ---
+bindsym $mod+1 workspace number 1
+# Cambia al espacio de trabajo 1
+bindsym $mod+2 workspace number 2
+# Cambia al espacio de trabajo 2 (Donde pusimos Vivaldi)
+bindsym $mod+3 workspace number 3
+# Cambia al espacio de trabajo 3
+bindsym $mod+4 workspace number 4
+# Cambia al espacio de trabajo 4
+bindsym $mod+5 workspace number 5
+# Cambia al espacio de trabajo 5
+bindsym $mod+6 workspace number 6
+# Cambia al espacio de trabajo 6
+bindsym $mod+7 workspace number 7
+# Cambia al espacio de trabajo 7
+bindsym $mod+8 workspace number 8
+# Cambia al espacio de trabajo 8
+bindsym $mod+9 workspace number 9
+# Cambia al espacio de trabajo 9
+
+# --- Mover ventanas a Workspaces ($mod + Shift + número) ---
+bindsym $mod+Shift+1 move container to workspace number 1
+# Envía la ventana actual al espacio 1
+bindsym $mod+Shift+2 move container to workspace number 2
+# Envía la ventana actual al espacio 2
+bindsym $mod+Shift+3 move container to workspace number 3
+# Envía la ventana actual al espacio 3
+bindsym $mod+Shift+4 move container to workspace number 4
+# Envía la ventana actual al espacio 4
+bindsym $mod+Shift+5 move container to workspace number 5
+# Envía la ventana actual al espacio 5
+bindsym $mod+Shift+6 move container to workspace number 6
+# Envía la ventana actual al espacio 6
+bindsym $mod+Shift+7 move container to workspace number 7
+# Envía la ventana actual al espacio 7
+bindsym $mod+Shift+8 move container to workspace number 8
+# Envía la ventana actual al espacio 8
+bindsym $mod+Shift+9 move container to workspace number 9
+# Envía la ventana actual al espacio 9
+
+exec_always blueman-applet
+# Sway lo lanza al inicio como un proceso huérfano (daemon), así no depende de ninguna terminal.
+
+# Bloqueo con imagen de fondo fija y desenfoque
+bindsym $mod+l exec swaylock \
+    --image /usr/share/backgrounds/BzE9wFa.jpg \
+    --clock \
+    --indicator \
+    --indicator-radius 100 \
+    --indicator-thickness 7 \
+    --effect-blur 7x5 \
+    --effect-vignette 0.5:0.5 \
+    --ring-color 3b4252 \
+    --key-hl-color 88c0d0 \
+    --text-color eceff4 \
+    --inside-color 2e344088 \
+    --fade-in 0.2
+# --image: Carga tu fondo de pantalla actual.
+# --effect-blur: Aplica el desenfoque sobre esa imagen específica.:
+
+exec_always python3 ~/.config/sway/scripts/sway-opacity.py
+
+# --- Automatización de Eww ---
+
+# Iniciamos el demonio en segundo plano (imprescindible)
+exec_always eww daemon
+
+exec_always /home/nrlemo/.local/bin/eww-auto-hide.sh
+# Iniciamos nuestro script "tímido"
+
+# Toggle manual: Por si quieres invocarlo en un workspace con apps
+bindsym $mod+i exec eww close dashboard || eww open dashboard
+
+

@@ -1,0 +1,26 @@
+#!/bin/bash
+# ~/.local/bin/eww-auto-hide.sh
+
+# Aseguramos que el daemon y la ventana estén listos
+sleep 1
+eww open dashboard 2>/dev/null
+
+check_and_action() {
+    # Obtenemos el conteo, asegurando un '0' si la salida es nula con // 0
+    COUNT=$(swaymsg -t get_tree | jq -r '.. | select(.type? == "workspace" and .focused == true) | (.nodes | length) + (.floating_nodes | length) // 0')
+
+    # Usamos [[ ]] que es más resistente a variables vacías
+    if [[ "$COUNT" -eq 0 ]]; then
+        /usr/bin/eww update dash_reveal=true 2>/dev/null
+    else
+        /usr/bin/eww update dash_reveal=false 2>/dev/null
+    fi
+}
+
+# Ejecución inicial
+check_and_action
+
+# Suscripción a eventos
+swaymsg -t subscribe '["window", "workspace"]' -m | while read -r event; do
+    check_and_action
+done
