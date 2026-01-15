@@ -194,6 +194,9 @@ exec_always /home/nrlemo/.local/bin/eww-auto-hide.sh
 # Iniciamos nuestro script "tímido"
 
 # Toggle manual: Por si quieres invocarlo en un workspace con apps
-bindsym $mod+i exec eww close dashboard || eww open dashboard
+#bindsym $mod+i exec eww close dashboard || eww open dashboard
+bindsym $mod+i exec eww open --toggle dashboard
+#bindsym $mod+i exec ~/.local/bin/eww-auto-hide.sh
 
+#for_window [app_id="vivaldi-stable" title=".*WhatsApp.*"] floating enable, sticky enable, move position 1500 850, resize set 400 150, border pixel 2
 

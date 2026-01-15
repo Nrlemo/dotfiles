@@ -17,6 +17,7 @@ window {
 // Cajas individuales de estilo neon
 .panel-box {
   background-color: $bg-transparent;
+  margin-bottom: 15px;
   border: 2px solid $blue-neon;
   border-radius: 12px; // Radio un poco más pequeño
   padding: 12px;     // Padding reducido para ahorrar espacio
