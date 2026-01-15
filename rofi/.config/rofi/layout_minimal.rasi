@@ -1,0 +1,50 @@
+/* Estructura base sin colores definidos */
+configuration {
+    font: "JetBrainsMono Nerd Font Medium 12";
+    display-run: "run:";
+    display-drun: "run:";
+    drun-display-format: "{name}";
+    show-icons: false;
+}
+
+* {
+    /* Fondo transparente base para que acepte el color de i3 */
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+window {
+    location: center;
+    anchor: center;
+    padding: 0px;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 15px;
+    children: [ inputbar, listview ];
+    margin: 20% 30%;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+}
+
+prompt {
+    padding: 0px 10px 0px 0px;
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    scrollbar: false;
+    spacing: 5px;
+}
+
+element {
+    padding: 5px 0px;
+}
+
+/* El color del texto seleccionado también vendrá de i3 */
