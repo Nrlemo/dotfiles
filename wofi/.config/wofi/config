@@ -2,7 +2,10 @@
 show=drun
 width=30%
 lines=10
-prompt=Search Apps...
+prompt=Buscar Apps...
 allow_images=true
 image_size=24
 exec_search=true
+sort_order=default
+always_parse_args=true
+insensitive=true

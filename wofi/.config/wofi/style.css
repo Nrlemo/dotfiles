@@ -1,4 +1,4 @@
-window {
+#window {
     margin: 5px;
     border: 2px solid #bd93f9; /* Un color lavanda elegante */
     background-color: #282a36;
@@ -26,4 +26,10 @@ window {
 #selected {
     background-color: #44475a;
     border-radius: 5px;
+}
+#img {
+    margin-right: 10px;
+}
+#entry:selected {
+	background-color: #44475a;
 }

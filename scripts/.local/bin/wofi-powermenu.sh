@@ -1,0 +1,1 @@
+../../dotfiles/bin/.local/bin/wofi-powermenu.sh

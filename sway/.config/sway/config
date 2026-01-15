@@ -28,6 +28,18 @@ input "type:keyboard" {
     # Configura el atajo Alt + Shift para cambiar entre distribuciones rápidamente.
 }
 
+# Cambiar disposición de contenedores
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Alternar entre tiling y floating
+bindsym $mod+Shift+space floating toggle
+
+# Acceso al scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # --- Teclas Multimedia (Latitude 5480) ---
 
 # Brillo de pantalla (Usa brightnessctl)
@@ -65,7 +77,7 @@ bindsym $mod+Shift+c reload
 # Fondo de pantalla (Nyarch style) - Ajusta la ruta a tu imagen favorita
 output * bg /usr/share/backgrounds/BzE9wFa.jpg fill
 
-default_border pixel 2
+default_border pixel 3
 gaps inner 10
 gaps outer 5
 
@@ -74,7 +86,7 @@ bar {
 }
 
 # --- Screenshots (Grim + Slurp) ---
-bindsym Print exec grim -g "$(slurp)" ~/Imagenes/$(date +%Y-%m-%d-%H%M%S).png
+#bindsym Print exec grim -g "$(slurp)" ~/Imagenes/$(date +%Y-%m-%d-%H%M%S).png
 
 exec flameshot
 # Esto lanza el daemon en segundo plano al iniciar Sway.
@@ -82,6 +94,8 @@ exec flameshot
 # Lanzar Flameshot en modo selección
 bindsym $mod+Shift+s exec flameshot gui
 # $mod es Mod4 (Win). Shift+s captura la intención.
+
+bindsym Print exec flameshot gui
 
 assign [app_id="vivaldi-stable"] workspace number 2
 # Fuerza a que cualquier ventana de Vivaldi se abra siempre en el espacio 2.
