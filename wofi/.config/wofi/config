@@ -1,11 +1,10 @@
 # ~/.config/wofi/config
 show=drun
-width=30%
-lines=10
-prompt=Buscar Apps...
+# Define que inicie buscando aplicaciones.
+width=40%
+height=40%
+location=center
 allow_images=true
-image_size=24
-exec_search=true
-sort_order=default
-always_parse_args=true
-insensitive=true
+lines=8
+prompt=run:
+filter_rate=100

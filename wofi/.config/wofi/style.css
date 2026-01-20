@@ -1,35 +1,62 @@
-#window {
-    margin: 5px;
-    border: 2px solid #bd93f9; /* Un color lavanda elegante */
-    background-color: #282a36;
-    font-family: 'JetBrains Mono', sans-serif;
-    font-size: 14px;
+/* Ventana principal con borde redondeado Teal */
+window {
+    font-family: "JetBrainsMono Nerd Font Medium";
+    font-size: 12pt; /* Tamaño base */
+    background-color: #1e1e2e; /* Base de Catppuccin */
+    border: 3px solid #94e2d5; /* Borde color Teal~~ */
+    border-radius: 15px;
 }
 
-#input {
-    margin: 5px;
-    border: none;
-    color: #f8f8f2;
-    background-color: #44475a;
-}
-
-#inner-box {
-    margin: 5px;
-    background-color: #282a36;
-}
-
+/* Contenedor exterior */
 #outer-box {
-    margin: 5px;
-    background-color: #282a36;
+    margin: 10px;
+    background-color: transparent;
 }
 
-#selected {
-    background-color: #44475a;
-    border-radius: 5px;
+/* Caja de búsqueda */
+#input {
+    margin: 10px;
+    border: 2px solid #313244;
+    border-radius: 10px;
+    background-color: #313244;
+    color: #cdd6f4;
 }
+
+/* Intercalado de colores (Zebra striping) */
+#entry:nth-child(even) {
+    background-color: #181825; /* Gris más oscuro */
+}
+
+#entry:nth-child(odd) {
+    background-color: #1e1e2e; /* Gris base */
+}
+
+/* Estilo general de las entradas */
+#entry {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 2px 5px;
+}
+
+/* Iconos del tamaño de la letra */
 #img {
     margin-right: 10px;
+    width: 15px; /* Ajustado al font-size aprox */
+    height: 20px;
 }
+
+/* EFECTO DE SELECCIÓN: 25% más grande */
 #entry:selected {
-	background-color: #44475a;
+    background-color: #45475a; /* Color de realce */
+    outline: none;
+}
+
+#text:selected {
+    font-size: 1.30em; /* 50% de incremento en texto~~ */
+    color: #94e2d5; /* Texto en teal para resaltar */
+}
+
+#img:selected {
+    width: 25px; /* 25% de incremento sobre los 20px base */
+    height: 25px;
 }
