@@ -204,3 +204,15 @@ mode "resize" {
 
 # Atajo para activar el modo
 bindsym $mod+r mode "resize"
+
+# Regla específica para notificaciones de WhatsApp en Vivaldi
+for_window [app_id="vivaldi-stable" title="(?i).*(whatsapp|web\.whatsapp\.com).*"] floating enable, sticky enable, move position 1400 800, resize set 400 150, border pixel 2
+# ^ Activa el modo flotante, lo mantiene en todos los workspaces y lo posiciona abajo a la derecha.
+
+# Regla general para popups de Vivaldi (Extensiones o Diálogos)
+for_window [app_id="vivaldi-stable" window_role="pop-up"] floating enable
+# ^ Si el popup se identifica con el rol de "pop-up", se abrirá flotando automáticamente.
+
+# Regla para diálogos de guardado o login
+for_window [app_id="vivaldi-stable" window_type="dialog"] floating enable
+# ^ Captura ventanas de interacción que no deben ser parte del tiling.
